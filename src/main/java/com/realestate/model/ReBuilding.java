@@ -49,6 +49,9 @@ public class ReBuilding extends Auditable<String>{
 	//Set has better performance than List in many-to-many
 	private Set<ReEvent> events;
 	
+	@ManyToMany(mappedBy = "building")
+	private Set<ReJuristic> juristic;
+	
 //	@Column(name = "created_by")
 //	private String createdBy;
 //	
