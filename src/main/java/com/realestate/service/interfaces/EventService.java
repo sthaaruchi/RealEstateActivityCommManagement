@@ -15,12 +15,14 @@ public interface EventService {
 	
 	void save(ReEvent event);
 
-	List<ReEvent> getCurrentEvents();
+	List<ReEvent> getCurrentEventsForResidents(long id);
 	
 	Optional<ReEvent> getEventById(long id);
 	
 	void updateEvent(ReEvent event);
 	
 	void deleteEvent(long id);
+
+	List<ReEvent> getCurrentEventsForJuristics(long userId);
 
 }

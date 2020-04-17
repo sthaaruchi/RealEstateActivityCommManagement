@@ -1,6 +1,7 @@
 package com.realestate.controller;
 
 
+import java.security.Principal;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -20,8 +21,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.realestate.dao.ReBuildingJPADao;
+import com.realestate.dao.ReUserJPADao;
 import com.realestate.model.ReBuilding;
 import com.realestate.model.ReEvent;
+import com.realestate.model.ReUser;
 import com.realestate.service.interfaces.EventService;
 
 /**
@@ -39,6 +42,9 @@ public class EventController {
 	
 	@Autowired
 	ReBuildingJPADao buildingDao;
+	
+	@Autowired 
+	ReUserJPADao userDao;
 	
 	 @InitBinder
 	    public void initBinder(WebDataBinder binder) {
@@ -72,10 +78,26 @@ public class EventController {
     }
 	
 	@RequestMapping(path="/showEvents", method = RequestMethod.GET)
-	public String showEventsPage(ModelMap model) {
-        model.put("events", eventService.getCurrentEvents());
-	     
+	public String showEventsPage(ModelMap model, Principal principal) {
+		ReUser u = userDao.findByUsername(principal.getName());
+		if (u.getRole().equalsIgnoreCase("ROLE_MANAGER") || u.getRole().equalsIgnoreCase("ROLE_TECHNICIAN")
+				|| u.getRole().equalsIgnoreCase("ROLE_SECURITY")) {
+			return "redirect:/showEventsForJuristics";
+		}
+        model.put("events", eventService.getCurrentEventsForResidents(u.getUserId().longValue()));  
 	    return "eventList";
+	}
+	
+	@RequestMapping(path="/showEventsForJuristics", method = RequestMethod.GET)
+	public String showEventsPageForJuristics(ModelMap model, Principal principal) {
+		ReUser u = userDao.findByUsername(principal.getName());
+		if (u.getRole().equalsIgnoreCase("ROLE_RESIDENT")) {
+			return "error";
+		}
+		
+		model.put("events", eventService.getCurrentEventsForJuristics(u.getUserId().longValue()));
+		model.put("role", u.getRole().toString());     
+	    return "EventListForJuristics";
 	}
 	
 	@RequestMapping(value = "/updateEvent", method = RequestMethod.GET)

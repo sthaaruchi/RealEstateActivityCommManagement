@@ -1,16 +1,12 @@
 package com.realestate.service;
 
-import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.realestate.dao.ReBuildingJPADao;
 import com.realestate.dao.ReEventJPADao;
-import com.realestate.model.ReBuilding;
 import com.realestate.model.ReEvent;
 import com.realestate.service.interfaces.EventService;
 
@@ -36,8 +32,8 @@ public class EventServiceImpl implements EventService{
 	}
 
 	@Override
-	public List<ReEvent> getCurrentEvents() {
-		return dao.getCurrentEvents();
+	public List<ReEvent> getCurrentEventsForResidents(long id) {
+		return dao.getCurrentEventsForResidents(id);
 	}
 
 	@Override
@@ -58,6 +54,11 @@ public class EventServiceImpl implements EventService{
             dao.delete(event.get());
         }
     }
+
+	@Override
+	public List<ReEvent> getCurrentEventsForJuristics(long userId) {
+		return dao.getCurrentEventsForJuristics(userId);
+	}
 
 
 }

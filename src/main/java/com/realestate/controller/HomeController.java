@@ -16,15 +16,7 @@ public class HomeController {
 	
 	@RequestMapping(path = "/home")
 	public String userDashboard(Principal request) {
-		System.out.println("in here");
-		ReUser u = userDao.findByUsername(request.getName());
-		if (u.getRole().equalsIgnoreCase("ROLE_RESIDENT")) {
-			System.out.println("RESIDENT role");
-			return "ResidentHomePage";
-//			return "ResidentHomePage.jsp";
-			}
-//		else
-			return "eventAdd";
+		return "Home";
 	}
 	
 	@RequestMapping(path = "/login")
