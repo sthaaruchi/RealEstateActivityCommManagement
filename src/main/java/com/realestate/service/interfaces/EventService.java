@@ -24,5 +24,7 @@ public interface EventService {
 	void deleteEvent(long id);
 
 	List<ReEvent> getCurrentEventsForJuristics(long userId);
+	
+	void joinEvent(long eventId, long userId);
 
 }

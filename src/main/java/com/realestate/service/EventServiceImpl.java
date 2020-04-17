@@ -60,5 +60,12 @@ public class EventServiceImpl implements EventService{
 		return dao.getCurrentEventsForJuristics(userId);
 	}
 
+	@Override
+	public void joinEvent(long eventId, long userId) {
+		dao.joinEvent(eventId, userId);
+		
+		
+	}
+
 
 }

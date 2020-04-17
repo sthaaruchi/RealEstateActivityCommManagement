@@ -1,5 +1,7 @@
 package com.realestate.model;
 
+import java.util.Set;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -77,4 +80,9 @@ public class ReUser{
 	@OneToOne(mappedBy="user", fetch = FetchType.LAZY, cascade =CascadeType.ALL)
 	@JsonIgnore
 	private ReJuristic juristic;
+	
+	@ManyToMany(mappedBy = "residents") 
+	//let the other side create the association table
+	//Set has better performance than List in many-to-many
+	private Set<ReEvent> events;
 }

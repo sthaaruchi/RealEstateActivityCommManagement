@@ -20,7 +20,7 @@
     <tbody>
      <c:forEach items="${events}" var="event">
       <tr>
-       <td>${event.title}</td>
+       <td><a href="/viewEvent?id=${event.eventId}">${event.title}</a></td>
        <td>${event.location}</td>
        <td><fmt:formatDate value="${event.eventDate}"
          pattern="dd/MM/yyyy" /></td>

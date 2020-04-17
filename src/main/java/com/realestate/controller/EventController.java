@@ -127,5 +127,23 @@ public class EventController {
         return "redirect:/showEvents";
     }
 	
+	@RequestMapping(value = "/viewEvent", method = RequestMethod.GET)
+    public String viewEventDetails(@RequestParam long id, ModelMap model, Principal principal) {
+        ReEvent event = eventService.getEventById(id).get();
+        model.put("event", event);
+        
+        ReUser u = userDao.findByUsername(principal.getName());
+        model.put("user", u);
+        return "ViewEvent";
+    }
+	
+	@RequestMapping(value = "/joinEvent", method = RequestMethod.GET)
+    public String joinEvent(@RequestParam long id, ModelMap model, Principal principal) {
+        ReUser u = userDao.findByUsername(principal.getName());
+        eventService.joinEvent(id, u.getUserId().longValue());
+        
+        return "redirect:/viewEvent?id="+id;
+    }
+	
 	
 }

@@ -29,7 +29,7 @@
        <td>${event.location}</td>
        <td><fmt:formatDate value="${event.eventDate}"
          pattern="dd/MM/yyyy" /></td>
-       <c:if test="${role == 'MANAGER'}"><td><a type="button" class="btn btn-success"
+       <c:if test="${role == 'ROLE_MANAGER'}"><td><a type="button" class="btn btn-success"
         href="/updateEvent?id=${event.eventId}">Update</a>
        <a type="button" class="btn btn-warning"
         href="/deleteEvent?id=${event.eventId}">Delete</a></td>

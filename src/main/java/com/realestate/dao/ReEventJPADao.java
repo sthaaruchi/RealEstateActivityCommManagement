@@ -2,7 +2,10 @@ package com.realestate.dao;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 
 import com.realestate.model.ReEvent;
@@ -35,5 +38,10 @@ public interface ReEventJPADao extends JpaRepository<ReEvent, Long> {
 			"on ru.user_id = rf.juristic_id\r\n" + 
 			"where e.event_date >= NOW() and ru.user_id = ?)", nativeQuery = true)
 	List<ReEvent> getCurrentEventsForJuristics(long userId);
+	
+	@Transactional
+	@Modifying
+	@Query(value = "INSERT into event_joined values (?, ?)", nativeQuery = true)
+	void joinEvent(long eventId, long userId);
 
 }

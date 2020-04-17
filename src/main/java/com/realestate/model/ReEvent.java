@@ -78,6 +78,15 @@ public class ReEvent extends Auditable<String>{
 	@JsonIgnore
 //	@Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 	private Set<ReBuilding> buildings;
+	
+	@ManyToMany
+	@JoinTable(
+	  name = "event_joined", 
+	  joinColumns = @JoinColumn(name = "event_id"), 
+	  inverseJoinColumns = @JoinColumn(name = "user_id"))
+	@JsonIgnore
+//	@Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+	private Set<ReUser> residents;
 
 
 //	@PrePersist
