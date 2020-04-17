@@ -49,6 +49,21 @@
         required="required" />
 
       </fieldset>
+      
+      <fieldset class="form-group">
+       <form:label path="buildings">Invitation for Residents:</form:label>
+	  		<form:select path="buildings" class="multiselect-ui form-control" multiple="multiple">
+				<c:forEach items="${allBuildings}" var="building" >
+					<c:if test="${event.buildings.contains(building)}">
+						<form:option value="${building.buildingId}" selected="selected">${building.name}</form:option>
+					</c:if>
+					<c:if test="${!event.buildings.contains(building)}">
+						<form:option value="${building.buildingId}">${building.name}</form:option>
+					</c:if>
+					
+				</c:forEach>
+			</form:select>
+	  </fieldset>
 
       <button type="submit" class="btn btn-success">Save</button>
      </form:form>
@@ -57,4 +72,6 @@
   </div>
  </div>
 </div>
+	<br>
+	<br>
 <%@ include file="common/footer.jspf"%>

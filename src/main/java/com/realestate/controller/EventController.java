@@ -3,6 +3,7 @@ package com.realestate.controller;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 import javax.validation.Valid;
 
@@ -18,6 +19,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.realestate.dao.ReBuildingJPADao;
+import com.realestate.model.ReBuilding;
 import com.realestate.model.ReEvent;
 import com.realestate.service.interfaces.EventService;
 
@@ -34,6 +37,9 @@ public class EventController {
 	@Autowired
 	EventService eventService;
 	
+	@Autowired
+	ReBuildingJPADao buildingDao;
+	
 	 @InitBinder
 	    public void initBinder(WebDataBinder binder) {
 	        // Date - dd/MM/yyyy
@@ -46,6 +52,10 @@ public class EventController {
 	public String showNewEventPage(Model model) {
 	    ReEvent event = new ReEvent();
 	    model.addAttribute("event", event);
+	    List<ReBuilding> buildings = buildingDao.findAll();
+	    
+	    model.addAttribute("allBuildings", buildings);
+	    
 	     
 	    return "eventAdd";
 	}
@@ -72,6 +82,9 @@ public class EventController {
     public String showUpdateTodoPage(@RequestParam long id, ModelMap model) {
         ReEvent event = eventService.getEventById(id).get();
         model.put("event", event);
+        List<ReBuilding> buildings = buildingDao.findAll();
+	    
+	    model.put("allBuildings", buildings);
         return "eventAdd";
     }
 	

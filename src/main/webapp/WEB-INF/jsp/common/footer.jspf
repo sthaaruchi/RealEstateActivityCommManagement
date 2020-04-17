@@ -1,4 +1,4 @@
-<script src="webjars/jquery/1.9.1/jquery.min.js"></script>
+<script src="webjars/jquery/1.11.1/jquery.min.js"></script>
 <script src="webjars/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 <script src="webjars/bootstrap-datepicker/1.0.1/js/bootstrap-datepicker.js"></script>
 <script>
@@ -9,11 +9,15 @@
     $('#eventPublishDate').datepicker({
         format: 'dd/mm/yyyy'
     });
+    
+//     $('.multiselect-ui').multiselect({
+//        // includeSelectAllOption: true
+//     });
 </script>
 <div class="footer">
-    <h1>
+    <h4>
         @Copyright Team #2
-    </h1>
+    </h4>
 </div>
 </body>
 

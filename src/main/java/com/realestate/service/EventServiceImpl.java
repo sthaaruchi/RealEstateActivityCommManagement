@@ -31,15 +31,6 @@ public class EventServiceImpl implements EventService{
 	@Override
 	public void save(ReEvent event) {
 		
-		ReBuilding building = new ReBuilding();
-		building.setName("B1");
-		buildingdao.save(building);
-		
-		Set<ReBuilding> build = new HashSet<>();
-		build.add(buildingdao.getOne(1L));
-		
-		event.setBuildings(build);
-		
 		dao.save(event);
 		
 	}

@@ -15,7 +15,7 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
+
 
 /**
  * 
@@ -25,7 +25,6 @@ import lombok.ToString;
 
 @Setter
 @Getter
-@ToString
 @Entity
 @NoArgsConstructor
 @Table(name = "re_building") // alternative table name manually

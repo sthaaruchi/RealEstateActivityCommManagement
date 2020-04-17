@@ -11,8 +11,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-
-import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -20,7 +18,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
+
 
 /**
  * 
@@ -31,7 +29,6 @@ import lombok.ToString;
 @Entity
 @Getter
 @Setter
-@ToString
 @NoArgsConstructor
 @javax.persistence.Cacheable
 @org.hibernate.annotations.Cache(
@@ -79,7 +76,7 @@ public class ReEvent extends Auditable<String>{
 	  joinColumns = @JoinColumn(name = "event_id"), 
 	  inverseJoinColumns = @JoinColumn(name = "building_id"))
 	@JsonIgnore
-	@Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+//	@Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 	private Set<ReBuilding> buildings;
 
 
