@@ -38,14 +38,14 @@
 
       <fieldset class="form-group">
        <form:label path="eventDate">Event Date</form:label>
-       <form:input path="eventDate" type="text" class="form-control"
+       <form:input path="eventDate" type="datetime-local" class="form-control"
         required="required" />
 
       </fieldset>
       
       <fieldset class="form-group">
        <form:label path="eventPublishDate">Date to publish event</form:label>
-       <form:input path="eventPublishDate" type="text" class="form-control"
+       <form:input path="eventPublishDate" type="datetime-local" class="form-control"
         required="required" />
 
       </fieldset>

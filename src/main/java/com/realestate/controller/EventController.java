@@ -43,7 +43,7 @@ public class EventController {
 	 @InitBinder
 	    public void initBinder(WebDataBinder binder) {
 	        // Date - dd/MM/yyyy
-	        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+	        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
 	        binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, false));
 	    }
 
