@@ -2,11 +2,14 @@ package com.realestate.service;
 
 import java.util.List;
 import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.realestate.dao.ReBuildingJPADao;
+import com.realestate.dao.ReCommentJPADao;
 import com.realestate.dao.ReEventJPADao;
+import com.realestate.model.ReComment;
 import com.realestate.model.ReEvent;
 import com.realestate.service.interfaces.EventService;
 
@@ -23,6 +26,9 @@ public class EventServiceImpl implements EventService{
 	ReEventJPADao dao;
 	@Autowired
 	ReBuildingJPADao buildingdao;
+	
+	@Autowired
+	ReCommentJPADao commentDao;
 
 	@Override
 	public void save(ReEvent event) {
@@ -64,6 +70,36 @@ public class EventServiceImpl implements EventService{
 	public void joinEvent(long eventId, long userId) {
 		dao.joinEvent(eventId, userId);
 		
+		
+	}
+
+	@Override
+	public void cancelJoinEvent(long eventId, long userId) {
+		dao.cancelJoinEvent(eventId, userId);
+		
+	}
+
+	@Override
+	public void addComment(long eventId, String comment) {
+		ReComment eventComment = new ReComment();
+		ReEvent event = dao.findById(eventId).get();
+		eventComment.setComment(comment);
+		eventComment.setEvent(event);
+		commentDao.save(eventComment);
+	
+	}
+
+	@Override
+	public void updateComment(long commentId, String comment) {
+		ReComment cmnt = commentDao.getOne(commentId);
+		cmnt.setComment(comment);
+		commentDao.save(cmnt);
+		
+	}
+
+	@Override
+	public void deleteComment(long commentId) {
+		commentDao.deleteComment(commentId);
 		
 	}
 

@@ -145,5 +145,31 @@ public class EventController {
         return "redirect:/viewEvent?id="+id;
     }
 	
+	@RequestMapping(value = "/cancelJoinEvent", method = RequestMethod.GET)
+    public String cancelJoinEvent(@RequestParam long id, ModelMap model, Principal principal) {
+        ReUser u = userDao.findByUsername(principal.getName());
+        eventService.cancelJoinEvent(id, u.getUserId().longValue());
+        
+        return "redirect:/viewEvent?id="+id;
+    }
+	
+	@RequestMapping(value = "/addComment", method = RequestMethod.GET)
+    public String addComment(@RequestParam long eventId, @RequestParam String comment) {
+		eventService.addComment(eventId, comment);
+		return "redirect:/viewEvent?id="+eventId;
+    }
+	
+	@RequestMapping(value = "/updateComment", method = RequestMethod.GET)
+    public String updateComment(@RequestParam long eventId, @RequestParam long commentId, @RequestParam String comment) {
+		eventService.updateComment(commentId, comment);
+		return "redirect:/viewEvent?id="+eventId;
+    }
+	
+	@RequestMapping(value = "/deleteComment", method = RequestMethod.GET)
+    public String deleteComment(@RequestParam long commentId, @RequestParam long eventId) {
+		eventService.deleteComment(commentId);
+		return "redirect:/viewEvent?id="+eventId;
+    }
+	
 	
 }

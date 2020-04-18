@@ -8,6 +8,7 @@
     <div class="panel-body">
      <form:form method="post" modelAttribute="event">
       <form:hidden path="eventId" />
+      <form:hidden path="comments" />
       <fieldset class="form-group">
        <form:label path="title">Title</form:label>
        <form:input path="title" type="text" class="form-control"

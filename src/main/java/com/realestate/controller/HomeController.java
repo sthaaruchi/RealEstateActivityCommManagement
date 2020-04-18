@@ -7,7 +7,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.realestate.dao.ReUserJPADao;
-import com.realestate.model.ReUser;
 
 @Controller
 public class HomeController {

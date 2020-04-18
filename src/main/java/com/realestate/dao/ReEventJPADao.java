@@ -44,4 +44,10 @@ public interface ReEventJPADao extends JpaRepository<ReEvent, Long> {
 	@Query(value = "INSERT into event_joined values (?, ?)", nativeQuery = true)
 	void joinEvent(long eventId, long userId);
 
+	
+	@Transactional
+	@Modifying
+	@Query(value = "DELETE FROM event_joined WHERE event_id = ? AND user_id = ?", nativeQuery = true)
+	void cancelJoinEvent(long eventId, long userId);
+
 }

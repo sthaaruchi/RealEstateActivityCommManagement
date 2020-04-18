@@ -27,4 +27,12 @@ public interface EventService {
 	
 	void joinEvent(long eventId, long userId);
 
+	void cancelJoinEvent(long eventId, long userId);
+
+	void addComment(long eventId, String comment);
+
+	void updateComment(long commentId, String comment);
+
+	void deleteComment(long commentId);
+
 }

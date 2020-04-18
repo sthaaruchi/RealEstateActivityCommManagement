@@ -3,6 +3,12 @@
 <script src="webjars/bootstrap-datepicker/1.0.1/js/bootstrap-datepicker.js"></script>
 <script>
 
+function enableComment(id) {
+	  $('#comment_'+id).removeAttr("disabled");
+	  $("#button_"+id).removeAttr("disabled");
+	}
+
+
 </script>
 <div class="footer">
     <h4>
