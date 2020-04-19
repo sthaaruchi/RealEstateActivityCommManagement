@@ -2,8 +2,13 @@ package com.realestate.service.interfaces;
 
 import java.util.List;
 import java.util.Optional;
+
+import javax.validation.Valid;
+
+import org.springframework.stereotype.Service;
+
 import com.realestate.model.ReAnnouncement;
-import com.realestate.model.ReBuilding;
+
 
 public interface AnnouncementService {
 
@@ -19,12 +24,10 @@ public interface AnnouncementService {
 
 	List<ReAnnouncement> getAnnouncementsForResidents(long longValue);
 
-	List<ReAnnouncement> getAnnouncementsForManager(long longValue);
-
-	List<ReBuilding> getAllResponsibleBuildings(long longValue);
+	List<ReAnnouncement> getAnnouncementsForJuristic(long longValue, String role);
 
 	void sendMailForAnnouncement(ReAnnouncement announcement);
-	
+
 	void sendScheduledEmail();
 
 }

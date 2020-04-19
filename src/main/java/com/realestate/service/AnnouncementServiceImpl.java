@@ -1,23 +1,30 @@
 package com.realestate.service;
-
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
+
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.MailException;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.stereotype.Service;
+
 import com.realestate.dao.ReAnnouncementJPADao;
 import com.realestate.dao.ReUserJPADao;
 import com.realestate.model.ReAnnouncement;
-import com.realestate.model.ReBuilding;
 import com.realestate.model.ReUser;
 import com.realestate.service.interfaces.AnnouncementService;
 import com.realestate.service.interfaces.EmailService;
 
+/**
+ * 
+ * @author Su
+ * Service implementation class for all the services related to announcement
+ */
+
 @Service
 public class AnnouncementServiceImpl implements AnnouncementService {
-	
 	private Logger logger = Logger.getLogger(AnnouncementServiceImpl.class);
 	
 	@Autowired
@@ -67,17 +74,6 @@ public class AnnouncementServiceImpl implements AnnouncementService {
 	}
 
 	@Override
-	public List<ReAnnouncement> getAnnouncementsForManager(long userId) {
-		return annnouncementDao.getAnnouncementsForManager(userId);
-	}
-
-	@Override
-	public List<ReBuilding> getAllResponsibleBuildings(long juristicId) {
-		// TODO Auto-generated method stub
-		return annnouncementDao.getAllResponsibleBuildings(juristicId);
-	}
-
-	@Override
 	public void sendMailForAnnouncement(ReAnnouncement announcement) {
 		List<ReUser> residents = userDao.findAllResidentsLiveIn(announcement.getAnnouncementId().longValue());
 		List<ReUser> juristics = userDao.findAllJursiticsResponsibleFor(announcement.getAnnouncementId().longValue());
@@ -90,7 +86,6 @@ public class AnnouncementServiceImpl implements AnnouncementService {
 			emailMsg.setFrom("reacm-7a71d1@inbox.mailtrap.io");
 			try {
 				emailService.sendEmail(emailMsg);
-			
 			}
 			catch(MailException ex) { 
 				logger.warn("Email sending failed::" + ex.getMessage());
@@ -121,6 +116,9 @@ public class AnnouncementServiceImpl implements AnnouncementService {
 		
 	} 
 	
-	
+	@Override
+	public List<ReAnnouncement> getAnnouncementsForJuristic(long userId, String role) {
+		return annnouncementDao.getAnnouncementsForJuristic(userId,role);
+	}
 
 }

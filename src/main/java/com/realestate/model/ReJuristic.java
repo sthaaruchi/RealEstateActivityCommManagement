@@ -24,10 +24,16 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+/**
+ * 
+ * @author Su
+ * Entity class for re_juristic table
+ */
+
 @Entity
 @Data
 @NoArgsConstructor
-@Table(name="re_juristics")
+@Table(name="re_juristic")
 @javax.persistence.Cacheable
 @org.hibernate.annotations.Cache(
 		usage = CacheConcurrencyStrategy.READ_WRITE) 
@@ -43,7 +49,7 @@ public class ReJuristic{
 	private String emergencyContactNo;
 	
 	@OneToOne(cascade = CascadeType.ALL, orphanRemoval = false)
-	@JoinColumn(name = "juristicId", referencedColumnName = "user_id")
+	@JoinColumn(name = "juristicId")
 	@MapsId
 	@JsonIgnore private ReUser user;
 	
@@ -64,10 +70,10 @@ public class ReJuristic{
 	@Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 	@JoinTable(name = "responsible_for",
     joinColumns = {
-            @JoinColumn(name = "juristic_id", referencedColumnName = "juristicId",
+            @JoinColumn(name = "juristic_id",
                     nullable = false, updatable = false)},
     inverseJoinColumns = {
-            @JoinColumn(name = "building_id", referencedColumnName = "building_id",
+            @JoinColumn(name = "building_id",
                     nullable = false, updatable = false)})
 	private Set<ReBuilding> building;
 	

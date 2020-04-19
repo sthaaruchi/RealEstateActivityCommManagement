@@ -5,10 +5,18 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.authentication.AuthenticationManagerBeanDefinitionParser;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+
+/**
+ * 
+ * @author Su
+ * Configuration class for login security
+ */
 
 @Configuration
 @EnableWebSecurity
@@ -26,12 +34,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		http.csrf().disable().
 		authorizeRequests()
-			.antMatchers("/juristic/**").hasRole("MANAGER")
-			.antMatchers("/juristic/**").hasRole("TECHNICIAN")
-			.antMatchers("/juristic/**").hasRole("SECURITY")
-			.antMatchers("/resisdent").hasAnyRole("RESIDENT")
+			.antMatchers("/juristic/**").hasAnyRole("MANAGER","TECHNICIAN","SECURITY")
+			.antMatchers("/resisdent/**").hasRole("RESIDENT")
 				/* .antMatchers("/h2-console/**", "/login").permitAll() */
-				// .anyRequest().anuthenticated()
+			.anyRequest().authenticated()
 			.and()
 				.formLogin()
 				// .loginPage("/login").permitAll()

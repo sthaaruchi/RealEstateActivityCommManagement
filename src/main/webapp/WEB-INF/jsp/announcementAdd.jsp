@@ -30,6 +30,22 @@
 							<form:input path="publishAnnouncementDate" type="datetime-local"
 								class="form-control" required="" />
 						</fieldset>
+						
+						<fieldset class="form-group">
+							<form:label path="userGroup">Announcement for User Group:</form:label>
+							<form:select path="userGroup" class="multiselect-ui form-control">
+								<c:forEach items="${usergroups}" var="usergroup">
+									<c:if test="${announcement.userGroup == usergroup}">
+										<form:option value="${usergroup}"
+											selected="selected">${usergroup}</form:option>
+									</c:if>
+									<c:if test="${announcement.userGroup != usergroup}">
+										<form:option value="${usergroup}">${usergroup}</form:option>
+									</c:if>
+
+								</c:forEach>
+							</form:select>
+						</fieldset>
 
 						<fieldset class="form-group">
 							<form:label path="buildings">Announcement for Residents:</form:label>

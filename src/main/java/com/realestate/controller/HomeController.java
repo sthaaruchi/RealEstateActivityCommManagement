@@ -9,6 +9,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.realestate.dao.ReUserJPADao;
 
+
+/**
+ * 
+ * @author Su
+ * This controller class handles all the form actions for user login page
+ *
+ */
+
 @Controller
 public class HomeController {
 	private Logger logger = Logger.getLogger(HomeController.class);
@@ -18,7 +26,6 @@ public class HomeController {
 	
 	@RequestMapping(path = "/home")
 	public String userDashboard(Principal request) {
-		logger.info("Displaying Homepage - userDashBoard()");
 		return "Home";
 	}
 	

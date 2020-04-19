@@ -1,5 +1,6 @@
 package com.realestate.model;
 
+import java.io.Serializable;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -9,7 +10,9 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
+import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
@@ -22,15 +25,21 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+/**
+ * 
+ * @author Su
+ * Entity class for re_user table
+ */
+
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
-@Table(name="re_users")
+@Table(name="re_user")
 @javax.persistence.Cacheable
 @org.hibernate.annotations.Cache(
 		usage = CacheConcurrencyStrategy.READ_WRITE) 
-public class ReUser{
+public class ReUser implements Serializable{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

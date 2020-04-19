@@ -9,6 +9,13 @@ import org.springframework.stereotype.Service;
 import com.realestate.dao.ReUserJPADao;
 import com.realestate.model.ReUser;
 
+
+/**
+ * 
+ * @author Su
+ * Service class to load the user for authorization
+ */
+
 @Service
 public class MyUserDetailsService implements UserDetailsService{
 	

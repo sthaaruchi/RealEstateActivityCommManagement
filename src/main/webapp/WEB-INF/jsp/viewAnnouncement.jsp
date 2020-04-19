@@ -19,6 +19,15 @@
 					</p>
 					<br>
 					<p>
+						<b>Announcement for User Group:</b>
+					</p>
+					<ul>
+						<c:forEach items="${announcement.userGroup}" var="user_group">
+							<li>${announcement.userGroup}</li>
+						</c:forEach>
+					</ul>
+					<br>
+					<p>
 						<b>Announcement for Residents:</b>
 					</p>
 					<ul>

@@ -10,12 +10,13 @@ import org.springframework.security.core.userdetails.UserDetails;
 import com.realestate.model.ReUser;
 
 
+/**
+ * 
+ * @author Su
+ * userimplementation class for login
+ */
 public class UserDetailsImpl implements UserDetails {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
 	private ReUser user;
 	
 	public UserDetailsImpl(ReUser user) {

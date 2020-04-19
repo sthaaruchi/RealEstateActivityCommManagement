@@ -20,7 +20,7 @@ public interface ReEventJPADao extends JpaRepository<ReEvent, Long> {
 	@Query(value = "SELECT * FROM re_event e join event_building eb ON e.event_id = eb.event_id\r\n" + 
 			"JOIN re_building rb\r\n" + 
 			"ON eb.building_id = rb.building_id\r\n" + 
-			"JOIN re_residents rr\r\n" + 
+			"JOIN re_resident rr\r\n" + 
 			"ON rr.live_in_building_id = eb.building_id\r\n" + 
 			"WHERE e.event_date >= NOW() and rr.resident_id = ? ", 
 			  nativeQuery = true)
@@ -32,9 +32,9 @@ public interface ReEventJPADao extends JpaRepository<ReEvent, Long> {
 			"on eb.building_id = b.building_id\r\n" + 
 			"join responsible_for rf\r\n" + 
 			"on eb.building_id = rf.building_id\r\n" + 
-			"join re_juristics rj\r\n" + 
+			"join re_juristic rj\r\n" + 
 			"on rj.juristic_id = rf.juristic_id\r\n" + 
-			"join re_users ru\r\n" + 
+			"join re_user ru\r\n" + 
 			"on ru.user_id = rf.juristic_id\r\n" + 
 			"where e.event_date >= NOW() and ru.user_id = ?)", nativeQuery = true)
 	List<ReEvent> getCurrentEventsForJuristics(long userId);
