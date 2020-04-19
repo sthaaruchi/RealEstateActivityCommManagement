@@ -58,11 +58,12 @@
 			      <button type="submit" class="btn btn-success" id="button_${comment.commentId}" disabled>Save</button>
 			      
 			    </form>
-				<button class="btn btn-success" id="editButton" onClick="enableComment(${comment.commentId})">Edit</button>
-	            <a href="/deleteComment?commentId=${comment.commentId}&eventId=${event.eventId}">
-	              	<button class="btn btn-success">Delete</button>
-	            </a>
-           
+			    <c:if test="${comment.createdBy == username}">
+					<button class="btn btn-success" id="editButton" onClick="enableComment(${comment.commentId})">Edit</button>
+		            <a href="/deleteComment?commentId=${comment.commentId}&eventId=${event.eventId}">
+		              	<button class="btn btn-success">Delete</button>
+		            </a>
+           		</c:if>
           </div>
        </div>
     </c:forEach>

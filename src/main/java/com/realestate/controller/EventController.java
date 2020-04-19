@@ -134,6 +134,7 @@ public class EventController {
         
         ReUser u = userDao.findByUsername(principal.getName());
         model.put("user", u);
+        model.put("username", u.getUsername().toString());
         return "ViewEvent";
     }
 	
