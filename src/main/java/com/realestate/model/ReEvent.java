@@ -7,6 +7,7 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -84,7 +85,7 @@ public class ReEvent extends Auditable<String>{
 //	@Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 	private Set<ReBuilding> buildings;
 	
-	@ManyToMany
+	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(
 	  name = "event_joined", 
 	  joinColumns = @JoinColumn(name = "event_id"), 

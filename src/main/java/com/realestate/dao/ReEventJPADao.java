@@ -49,5 +49,6 @@ public interface ReEventJPADao extends JpaRepository<ReEvent, Long> {
 	@Modifying
 	@Query(value = "DELETE FROM event_joined WHERE event_id = ? AND user_id = ?", nativeQuery = true)
 	void cancelJoinEvent(long eventId, long userId);
+	
 
 }

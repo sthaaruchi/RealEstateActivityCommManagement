@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-
 import com.realestate.model.ReAnnouncement;
 import com.realestate.model.ReBuilding;
 
@@ -38,4 +37,8 @@ public interface ReAnnouncementJPADao extends JpaRepository<ReAnnouncement, Long
 	@Query(value="SELECT * FROM re_building b JOIN responsible_for as rf ON b.building_id = rf.building_id"
 			+ " WHERE rf.juristic_id=?", nativeQuery= true)
 	List<ReBuilding> getAllResponsibleBuildings(long juristicId);
+	
+	
+	@Query(value="SELECT * from re_announcements where publish_announcement_date BETWEEN TIMESTAMP 'today' AND TIMESTAMP 'tomorrow';", nativeQuery = true)
+	List<ReAnnouncement> getAnnouncementsToEmail();
 }

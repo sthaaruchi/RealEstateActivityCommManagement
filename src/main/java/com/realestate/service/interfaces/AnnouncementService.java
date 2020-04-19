@@ -2,11 +2,6 @@ package com.realestate.service.interfaces;
 
 import java.util.List;
 import java.util.Optional;
-
-import javax.validation.Valid;
-
-import org.springframework.stereotype.Service;
-
 import com.realestate.model.ReAnnouncement;
 import com.realestate.model.ReBuilding;
 
@@ -29,5 +24,7 @@ public interface AnnouncementService {
 	List<ReBuilding> getAllResponsibleBuildings(long longValue);
 
 	void sendMailForAnnouncement(ReAnnouncement announcement);
+	
+	void sendScheduledEmail();
 
 }
