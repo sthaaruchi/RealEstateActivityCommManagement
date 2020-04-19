@@ -51,6 +51,9 @@ public class ReBuilding extends Auditable<String>{
 	@ManyToMany(mappedBy = "building")
 	private Set<ReJuristic> juristic;
 	
+	@ManyToMany(mappedBy = "buildings")
+	private Set<ReAnnouncement> announcements;
+	
 //	@Column(name = "created_by")
 //	private String createdBy;
 //	
