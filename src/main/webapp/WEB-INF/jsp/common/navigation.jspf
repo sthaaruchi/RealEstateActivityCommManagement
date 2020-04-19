@@ -7,7 +7,7 @@
      <ul class="nav navbar-nav">
           <li class="active"><a href="/home">Home</a></li>
           <li><a href="/showEvents">Event</a></li>
-          <li><a href="/showEvents">Announcement</a></li>
+          <li><a href="/showAnnouncements">Announcement</a></li>
      </ul>
      <ul class="nav navbar-nav navbar-right">
      	<li><a href="?lang=en"><fmt:message key="label.lang.en" /></a></li>

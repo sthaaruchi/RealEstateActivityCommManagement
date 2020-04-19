@@ -6,15 +6,14 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import com.realestate.dao.ReUserJPADao;
 import com.realestate.model.ReUser;
-import com.realestate.repository.UserRepository;
-
 
 @Service
 public class MyUserDetailsService implements UserDetailsService{
 	
 	@Autowired
-	private UserRepository userRepo;
+	private ReUserJPADao userRepo;
 
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
