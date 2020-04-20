@@ -2,8 +2,12 @@
 <%@ include file="common/navigation.jspf"%>
 
 <div class="container">
-	<div>
-		<a type="button" class="btn btn-primary btn-md"
+	<div class="container">
+		<div class="col-md-7 col-md-offset-1 ">
+			<input class="form-control mb-12" id="tableSearch" type="text"
+				placeholder="search announcments">
+		</div>
+		<a type="button" class="btn btn-primary btn-md "
 			href="/addAnnouncement">Create New Announcement</a>
 	</div>
 	<br>
@@ -21,28 +25,35 @@
 						<th width="20%"></th>
 					</tr>
 				</thead>
-				<tbody>
+				<tbody id="announcementTable">
 					<c:forEach items="${announcements}" var="announcement">
 						<tr>
-							<td><a href="/viewAnnouncement?id=${announcement.announcementId}">${announcement.title}</a></td>
+							<td><a
+								href="/viewAnnouncement?id=${announcement.announcementId}">${announcement.title}</a></td>
 							<td>${announcement.description}</td>
 							<td><fmt:formatDate
 									value="${announcement.publishAnnouncementDate}"
 									pattern="dd/MM/yyyy  hh/mm/ss" /></td>
+							<jsp:useBean id="now" class="java.util.Date" />
 							<c:if test="${role == 'ROLE_MANAGER'}">
-								<td><a type="button" class="btn btn-success"
-									href="/updateAnnouncement?id=${announcement.announcementId}">Update</a> <a
-									type="button" class="btn btn-warning"
+								<td><c:if
+										test="${announcement.publishAnnouncementDate gt now}">
+										<a type="button" class="btn btn-success"
+											href="/updateAnnouncement?id=${announcement.announcementId}">Update</a>
+									</c:if> <a type="button" class="btn btn-warning"
 									href="/deleteAnnouncement?id=${announcement.announcementId}">Delete</a></td>
 							</c:if>
 							<c:if test="${role != 'ROLE_MANAGER'}">
-							<c:if test="${role==announcement.editableBy}">
+								<c:if test="${role==announcement.editableBy}">
 
-								<td><a type="button" class="btn btn-success"
-									href="/updateAnnouncement?id=${announcement.announcementId}">Update</a> <a
-									type="button" class="btn btn-warning"
-									href="/deleteAnnouncement?id=${announcement.announcementId}">Delete</a></td>
-							</c:if></c:if>
+									<td><c:if
+											test="${announcement.publishAnnouncementDate gt now}">
+											<a type="button" class="btn btn-success"
+												href="/updateAnnouncement?id=${announcement.announcementId}">Update</a>
+										</c:if> <a type="button" class="btn btn-warning"
+										href="/deleteAnnouncement?id=${announcement.announcementId}">Delete</a></td>
+								</c:if>
+							</c:if>
 
 						</tr>
 					</c:forEach>

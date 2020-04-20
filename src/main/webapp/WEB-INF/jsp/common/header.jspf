@@ -8,7 +8,23 @@
 <title>Real Estate Activity and Communication Management</title>
 <link href="webjars/bootstrap/3.3.6/css/bootstrap.min.css"
  rel="stylesheet">
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+  $("#tableSearch").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#announcementTable tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+  $("#tableSearchForEvent").on("keyup", function() {
+	    var value = $(this).val().toLowerCase();
+	    $("#eventTable tr").filter(function() {
+	      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+	    });
+	  });
+});
+</script>
 <style>
 .footer {
     position: fixed;
@@ -19,40 +35,6 @@
     color: white;
     height: 30px;
     text-align: center;
-}
-
-.post-comments {
-  padding-bottom: 9px;
-  margin: 5px 0 5px;
-}
-
-.comments-nav {
-  border-bottom: 1px solid #eee;
-  margin-bottom: 5px;
-}
-
-.post-comments .comment-meta {
-  border-bottom: 1px solid #eee;
-  margin-bottom: 5px;
-}
-
-.post-comments .media {
-  border-left: 1px dotted #000;
-  border-bottom: 1px dotted #000;
-  margin-bottom: 5px;
-  padding-left: 10px;
-}
-
-.post-comments .media-heading {
-  font-size: 12px;
-  color: grey;
-}
-
-.post-comments .comment-meta a {
-  font-size: 12px;
-  color: grey;
-  font-weight: bolder;
-  margin-right: 5px;
 }
 </style>
 </head>

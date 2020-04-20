@@ -17,7 +17,7 @@ import com.realestate.model.ReAnnouncement;
 public interface ReAnnouncementJPADao extends JpaRepository<ReAnnouncement, Long> {
 
 	@Query(value = "SELECT * FROM re_announcement where announcement_id in"
-			+ "(SELECT a.announcement_id FROM re_announcements a JOIN announce_for af ON a.announcement_id = af.announcement_id"
+			+ "(SELECT a.announcement_id FROM re_announcement a JOIN announce_for af ON a.announcement_id = af.announcement_id"
 			+ " JOIN re_resident r ON r.live_in_building_id =  af.building_id where r.resident_id=? and"
 			+ " (a.publish_announcement_date<=NOW() or a.publish_announcement_date is null)) and (user_group is null or user_group='ROLE_RESIDENT')"
 			+ " ORDER BY announcement_id DESC", nativeQuery = true)
