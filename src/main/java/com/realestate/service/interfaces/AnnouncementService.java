@@ -30,4 +30,7 @@ public interface AnnouncementService {
 
 	void sendScheduledEmail();
 
+	//Added by Ruchi
+	List<ReAnnouncement> getAnnouncementsForJoinedEvents(long longValue);
+
 }

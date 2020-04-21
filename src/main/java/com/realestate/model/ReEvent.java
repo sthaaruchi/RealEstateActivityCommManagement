@@ -98,6 +98,11 @@ public class ReEvent extends Auditable<String>{
 	@JsonIgnore
 	@Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 	private List<ReComment> comments;
+	
+	@OneToMany(mappedBy = "event", cascade = CascadeType.ALL, orphanRemoval = true)
+	@JsonIgnore
+	@Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+	private List<ReAnnouncement> announcements;
 
 
 //	@PrePersist

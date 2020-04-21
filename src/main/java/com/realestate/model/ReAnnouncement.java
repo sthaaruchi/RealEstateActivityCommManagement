@@ -4,6 +4,7 @@ package com.realestate.model;
 import java.util.Date;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -13,6 +14,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.MapsId;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.Cache;
@@ -71,4 +74,9 @@ public class ReAnnouncement extends Auditable<String>{
             @JoinColumn(name = "building_id",
                     nullable = false, updatable = false)})
 	private Set<ReBuilding> buildings;
+	
+	
+	@ManyToOne
+	@JsonIgnore
+	private ReEvent event;
 }

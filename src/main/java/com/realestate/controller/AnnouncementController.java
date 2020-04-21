@@ -26,6 +26,7 @@ import com.realestate.model.ReAnnouncement;
 import com.realestate.model.ReBuilding;
 import com.realestate.model.ReUser;
 import com.realestate.service.interfaces.AnnouncementService;
+import com.realestate.service.interfaces.EventService;
 
 /**
  * 
@@ -45,6 +46,9 @@ public class AnnouncementController {
 	
 	@Autowired 
 	ReUserJPADao userDao;
+	
+	@Autowired
+	EventService eventService;
 
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
@@ -60,7 +64,19 @@ public class AnnouncementController {
 				|| u.getRole().equalsIgnoreCase("ROLE_SECURITY")) {
 			return "redirect:/showAnnouncementsForJuristics";
 		}
-		model.put("announcements", announcementService.getAnnouncementsForResidents(u.getUserId().longValue()));
+		/*
+		 * Changes by Ruchi, announcements can be for joined events or independent announcements
+		 */
+		List<ReAnnouncement> announce = new ArrayList<>();
+		
+		List<ReAnnouncement> annForResidents = announcementService.getAnnouncementsForResidents(u.getUserId().longValue());
+		List<ReAnnouncement> annForJoinedEvents = announcementService.getAnnouncementsForJoinedEvents(u.getUserId().longValue());
+		announce.addAll(annForResidents);
+		announce.addAll(annForJoinedEvents);
+		//model.put("announcements", announcementService.getAnnouncementsForResidents(u.getUserId().longValue()));
+		model.put("announcements", announce);
+		
+		
 		return "announcementList";
 		//return "redirect:/announcementList";
 	}
@@ -101,6 +117,8 @@ public class AnnouncementController {
 		model.addAttribute("announcement", announcement);
 		model.addAttribute("buildings", buildings);
 		model.addAttribute("usergroups", usergroup);
+		//Added by Ruchi
+		model.addAttribute("allEvents", eventService.getCurrentEventsForJuristics(user.getUserId().longValue()));
 		return "announcementAdd";
 	}
 

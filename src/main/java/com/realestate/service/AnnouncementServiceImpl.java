@@ -121,4 +121,10 @@ public class AnnouncementServiceImpl implements AnnouncementService {
 		return annnouncementDao.getAnnouncementsForJuristic(userId,role);
 	}
 
+	//Added by Ruchi
+	@Override
+	public List<ReAnnouncement> getAnnouncementsForJoinedEvents(long residentId) {
+		return annnouncementDao.getAnnouncementsForJoinedEvents(residentId);
+	}
+
 }

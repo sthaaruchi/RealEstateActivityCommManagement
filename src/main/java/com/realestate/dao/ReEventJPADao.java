@@ -22,7 +22,7 @@ public interface ReEventJPADao extends JpaRepository<ReEvent, Long> {
 			"ON eb.building_id = rb.building_id\r\n" + 
 			"JOIN re_resident rr\r\n" + 
 			"ON rr.live_in_building_id = eb.building_id\r\n" + 
-			"WHERE e.event_date >= NOW() and rr.resident_id = ? ", 
+			"WHERE e.event_publish_date <= NOW() and event_date >= NOW() and rr.resident_id = ? ", 
 			  nativeQuery = true)
 	List<ReEvent> getCurrentEventsForResidents(long id);
 

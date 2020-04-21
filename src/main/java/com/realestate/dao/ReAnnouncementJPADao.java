@@ -19,7 +19,7 @@ public interface ReAnnouncementJPADao extends JpaRepository<ReAnnouncement, Long
 	@Query(value = "SELECT * FROM re_announcement where announcement_id in"
 			+ "(SELECT a.announcement_id FROM re_announcement a JOIN announce_for af ON a.announcement_id = af.announcement_id"
 			+ " JOIN re_resident r ON r.live_in_building_id =  af.building_id where r.resident_id=? and"
-			+ " (a.publish_announcement_date<=NOW() or a.publish_announcement_date is null)) and (user_group is null or user_group='ROLE_RESIDENT')"
+			+ " (a.publish_announcement_date<=NOW() or a.publish_announcement_date is null)) and (user_group is null or user_group='RESIDENT')"
 			+ " ORDER BY announcement_id DESC", nativeQuery = true)
 	List<ReAnnouncement> getAnnouncementsForResidents(long userId);
 
@@ -42,7 +42,7 @@ public interface ReAnnouncementJPADao extends JpaRepository<ReAnnouncement, Long
 	 * "where e.event_date >= NOW() and ru.user_id = ?)", nativeQuery = true)
 	 */
 	@Query(value = "SELECT * from re_announcement where announcement_id in "
-			+ "(SELECT a.announcement_id FROM re_announcement  a JOIN announce_for af ON a.announcement_id = af.announcement_id"
+			+ "(SELECT a.announcement_id FROM re_announcement a JOIN announce_for af ON a.announcement_id = af.announcement_id"
 			+ " JOIN responsible_for as rf ON af.building_id = rf.building_id"
 			+ " JOIN re_user u ON rf.juristic_id = u.user_id where u.user_id=?) or user_group=? or user_group is null"
 			+ " ORDER BY announcement_id DESC", nativeQuery = true)
@@ -56,4 +56,11 @@ public interface ReAnnouncementJPADao extends JpaRepository<ReAnnouncement, Long
 	
 	@Query(value="SELECT * from re_announcements where publish_announcement_date BETWEEN TIMESTAMP 'today' AND TIMESTAMP 'tomorrow';", nativeQuery = true)
 	List<ReAnnouncement> getAnnouncementsToEmail();
+	
+	//Added by Ruchi
+	@Query(value="SELECT * from re_announcement ann "
+			+ "JOIN event_joined ej ON ann.event_event_id = ej.event_id "
+			+ "JOIN re_resident rr ON ej.user_id = rr.resident_id "
+			+ "WHERE rr.resident_id = ?", nativeQuery = true)
+	List<ReAnnouncement> getAnnouncementsForJoinedEvents(long residentId);
 }

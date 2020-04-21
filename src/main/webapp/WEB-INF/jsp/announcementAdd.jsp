@@ -63,6 +63,16 @@
 								</c:forEach>
 							</form:select>
 						</fieldset>
+						<!-- Ruchi -->
+						<fieldset class="form-group">
+							<form:label path="event">Announcement for Event:</form:label>
+							<form:select path="event" class="multiselect-ui form-control">
+								<form:option selected="selected" disabled="disabled" hidden="hidden" style='display: none' value=''></form:option>
+								<c:forEach items="${allEvents}" var="selEvent">
+										<form:option value="${selEvent.eventId}">${selEvent.title}</form:option>
+								</c:forEach>
+							</form:select>
+						</fieldset>
 
 						<button type="submit" class="btn btn-success">Save</button>
 					</form:form>
