@@ -34,7 +34,6 @@ import com.realestate.service.interfaces.EventService;
  * This controller class handles all the form actions for annocuncement page
  *
  */
-
 @Controller
 public class AnnouncementController {
 
@@ -117,7 +116,6 @@ public class AnnouncementController {
 		model.addAttribute("announcement", announcement);
 		model.addAttribute("buildings", buildings);
 		model.addAttribute("usergroups", usergroup);
-		//Added by Ruchi
 		model.addAttribute("allEvents", eventService.getCurrentEventsForJuristics(user.getUserId().longValue()));
 		return "announcementAdd";
 	}
@@ -156,7 +154,7 @@ public class AnnouncementController {
     }
 	
 	@RequestMapping(value = "/updateAnnouncement", method = RequestMethod.GET)
-    public String showUpdateTodoPage(@RequestParam long id, Model model,Principal request) {
+    public String showUpdateTodoPage(@RequestParam long id, ModelMap model,Principal request) {
 		ReUser user = userDao.findByUsername(request.getName());
 		List<String> usergroup = new ArrayList<String>();
 		if(user.getRole().equalsIgnoreCase("ROLE_MANAGER")) {
@@ -174,8 +172,8 @@ public class AnnouncementController {
 			usergroup.add("TECHNICIAN");
 			usergroup.add("RESIDENT");
 		}
-        ReAnnouncement announcement = announcementService.getAllAnnouncementById(id).get();
-        model.addAttribute("announcement", announcement);
+		ReAnnouncement announcement = announcementService.getAllAnnouncementById(id).get();
+		model.addAttribute("announcement", announcement);
         List<ReBuilding> buildings = buildingDao.findAll();
 	    
 	    model.addAttribute("buildings", buildings);

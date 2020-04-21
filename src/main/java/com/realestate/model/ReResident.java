@@ -52,7 +52,7 @@ public class ReResident{
 	private String floorNo;
 	
 	@OneToOne(cascade = CascadeType.ALL, orphanRemoval = false)
-	@JoinColumn(name = "resident_id")
+	@JoinColumn(name = "residentId")
 	@MapsId
 	@JsonIgnore private ReUser userForResiident;
 	

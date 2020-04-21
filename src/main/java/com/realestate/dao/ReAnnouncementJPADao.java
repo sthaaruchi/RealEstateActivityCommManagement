@@ -7,7 +7,6 @@ import org.springframework.data.jpa.repository.Query;
 
 import com.realestate.model.ReAnnouncement;
 
-
 /**
  * 
  * @author Su
@@ -43,18 +42,19 @@ public interface ReAnnouncementJPADao extends JpaRepository<ReAnnouncement, Long
 	 */
 	@Query(value = "SELECT * from re_announcement where announcement_id in "
 			+ "(SELECT a.announcement_id FROM re_announcement a JOIN announce_for af ON a.announcement_id = af.announcement_id"
+
 			+ " JOIN responsible_for as rf ON af.building_id = rf.building_id"
 			+ " JOIN re_user u ON rf.juristic_id = u.user_id where u.user_id=?) or user_group=? or user_group is null"
 			+ " ORDER BY announcement_id DESC", nativeQuery = true)
 	List<ReAnnouncement> getAnnouncementsForJuristic(long juristicId,String role);
-
+	
 	/**
 	 * 
 	 * @author Ruchi
 	 * JPA Repository class that has all the methods interacting to re_announcement table
 	 */
 	
-	@Query(value="SELECT * from re_announcements where publish_announcement_date BETWEEN TIMESTAMP 'today' AND TIMESTAMP 'tomorrow';", nativeQuery = true)
+	@Query(value="SELECT * from re_announcement where publish_announcement_date BETWEEN TIMESTAMP 'today' AND TIMESTAMP 'tomorrow';", nativeQuery = true)
 	List<ReAnnouncement> getAnnouncementsToEmail();
 	
 	//Added by Ruchi

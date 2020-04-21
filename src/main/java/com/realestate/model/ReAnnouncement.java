@@ -64,7 +64,7 @@ public class ReAnnouncement extends Auditable<String>{
 	
 	private String userGroup;
 	
-	@ManyToMany()
+	@ManyToMany(fetch=FetchType.EAGER)
 	@JsonIgnore
 	@JoinTable(name = "announce_for",
     joinColumns = {

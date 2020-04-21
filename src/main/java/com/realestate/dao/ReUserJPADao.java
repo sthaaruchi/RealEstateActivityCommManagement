@@ -7,8 +7,6 @@ import org.springframework.data.jpa.repository.Query;
 
 import com.realestate.model.ReBuilding;
 import com.realestate.model.ReUser;
-
-
 /**
  * 
  * @author Su
@@ -35,6 +33,7 @@ public interface ReUserJPADao extends JpaRepository<ReUser, Long>{
 			+ "(SELECT j.juristic_id FROM re_juristic j JOIN responsible_for rf ON j.juristic_id = rf.juristic_id"
 			+ " JOIN announce_for af ON af.building_id = rf.building_id"
 			+ " JOIN re_announcement a ON a.announcement_id =  af.announcement_id where a.announcement_id=? or (user_group is null or user_group!='RESIDENT')) and role!='ROLE_RESIDENT'",
+
 			nativeQuery = true)
 	List<ReUser> findAllJursiticsResponsibleFor(long announcementId);
 	
