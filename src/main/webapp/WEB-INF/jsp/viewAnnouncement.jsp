@@ -18,23 +18,40 @@
 						<b>Publish Date:</b> ${announcement.publishAnnouncementDate}
 					</p>
 					<br>
-					<p>
-						<b>Announcement for User Group:</b>
-					</p>
-					<ul>
-						<c:forEach items="${announcement.userGroup}" var="user_group">
-							<li>${announcement.userGroup}</li>
-						</c:forEach>
-					</ul>
-					<br>
-					<p>
-						<b>Announcement for Residents:</b>
-					</p>
-					<ul>
-						<c:forEach items="${announcement.buildings}" var="building">
-							<li>${building.name}</li>
-						</c:forEach>
-					</ul>
+					<c:if test="${announcement.event.eventId !=null }">
+						<p>
+							<b>Announcement for Event</b>
+						</p>
+						<ul>
+							See Event
+							<a href="/viewEvent?id=${announcement.event.eventId}">${announcement.event.title }</a>
+						</ul>
+						<br>
+					</c:if>
+					<c:if test="${announcement.event.eventId ==null }">
+						<p>
+							<b>Announcement for User Group:</b>
+						</p>
+						<ul>
+							<c:choose>
+								<c:when test="${announcement.userGroup != null }">
+        							<li>${announcement.userGroup}</li>
+    							</c:when>
+								<c:otherwise>
+       	 							<li>All</li>
+    							</c:otherwise>
+							</c:choose>
+						</ul>
+						<br>
+						<p>
+							<b>Announcement for Residents:</b>
+						</p>
+						<ul>
+							<c:forEach items="${announcement.buildings}" var="building">
+								<li>${building.name}</li>
+							</c:forEach>
+						</ul>
+					</c:if>
 				</div>
 			</div>
 		</div>

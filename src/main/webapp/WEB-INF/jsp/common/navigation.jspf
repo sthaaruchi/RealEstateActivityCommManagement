@@ -1,18 +1,18 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <nav role="navigation" class="navbar navbar-default">
  <div class="">
-  <a href="#" class="navbar-brand">Real Estate</a>
+  <a href="/home" class="navbar-brand">Real Estate</a>
  </div>
  <div class="navbar-collapse">
      <ul class="nav navbar-nav">
-          <li class="active"><a href="/home">Home</a></li>
-          <li><a href="/showEvents">Event</a></li>
-          <li><a href="/showAnnouncements">Announcement</a></li>
+          <li class="active"><a href="/home" id="Home">Home</a></li>
+          <li><a href="/showEvents" id="showEvents">Event</a></li>
+          <li><a href="/showAnnouncements" id="showAnnouncements">Announcement</a></li>
      </ul>
      <ul class="nav navbar-nav navbar-right">
-     	<li><a href="?lang=en"><fmt:message key="label.lang.en" /></a></li>
-		<li><a href="?lang=fr"><fmt:message key="label.lang.fr" /></a></li>
-        <li><a href="/logout">Logout</a></li>
+     	<li><a href="?lang=en" id="changeEnglish"><fmt:message key="label.lang.en" /></a></li>
+		<li><a href="?lang=fr" id="changeFrance"><fmt:message key="label.lang.fr" /></a></li>
+        <li><a href="/logout" id="logout">Logout</a></li>
      </ul>
  </div>
 </nav>

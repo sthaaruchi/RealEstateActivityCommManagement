@@ -8,7 +8,6 @@
     <div class="panel-body">
      <form:form method="post" modelAttribute="event">
       <form:hidden path="eventId" />
-      <form:hidden path="comments" />
       <fieldset class="form-group">
        <form:label path="title">Title</form:label>
        <form:input path="title" type="text" class="form-control"
@@ -56,17 +55,17 @@
 	  		<form:select path="buildings" class="multiselect-ui form-control" multiple="multiple">
 				<c:forEach items="${allBuildings}" var="building" >
 					<c:if test="${event.buildings.contains(building)}">
-						<form:option value="${building.buildingId}" selected="selected">${building.name}</form:option>
+						<form:option value="${building.buildingId}" id="${building.buildingId}" selected="selected">${building.name}</form:option>
 					</c:if>
 					<c:if test="${!event.buildings.contains(building)}">
-						<form:option value="${building.buildingId}">${building.name}</form:option>
+						<form:option value="${building.buildingId}" id="${building.buildingId}">${building.name}</form:option>
 					</c:if>
 					
 				</c:forEach>
 			</form:select>
 	  </fieldset>
 
-      <button type="submit" class="btn btn-success">Save</button>
+      <button type="submit" class="btn btn-success" id="saveEvent">Save</button>
      </form:form>
     </div>
    </div>
