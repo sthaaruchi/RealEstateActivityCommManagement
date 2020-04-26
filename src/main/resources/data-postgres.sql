@@ -1,11 +1,11 @@
 INSERT INTO re_user(active, email, firstname, lastname, password, phone, role, username)
 	VALUES (true,'man@gmail.com', 'John', 'Doe', '$2y$12$ZnYPgceWGUEGyXxhQjGmbOX6Xmu6t5rGYx0rtws1vg5Zjlkm5nRza', '09-111111111', 'ROLE_MANAGER', 'Man');
 INSERT INTO re_user(active, email, firstname, lastname, password, phone, role, username)
-	VALUES (true,'sec@gmail.com', 'Harry', 'Doe', '$2y$12$ZnYPgceWGUEGyXxhQjGmbOX6Xmu6t5rGYx0rtws1vg5Zjlkm5nRza', '09-111111111', 'ROLE_SECURITY', 'Sec1');
+	VALUES (true,'sec1@gmail.com', 'Harry', 'Doe', '$2y$12$ZnYPgceWGUEGyXxhQjGmbOX6Xmu6t5rGYx0rtws1vg5Zjlkm5nRza', '09-111111111', 'ROLE_SECURITY', 'Sec1');
 INSERT INTO re_user(active, email, firstname, lastname, password, phone, role, username)
-	VALUES (true,'sec@gmail.com', 'Harry', 'Doe', '$2y$12$ZnYPgceWGUEGyXxhQjGmbOX6Xmu6t5rGYx0rtws1vg5Zjlkm5nRza', '09-111111111', 'ROLE_SECURITY', 'Sec2');
+	VALUES (true,'sec2@gmail.com', 'Harry', 'Doe', '$2y$12$ZnYPgceWGUEGyXxhQjGmbOX6Xmu6t5rGYx0rtws1vg5Zjlkm5nRza', '09-111111111', 'ROLE_SECURITY', 'Sec2');
 INSERT INTO re_user(active, email, firstname, lastname, password, phone, role, username)
-	VALUES (true,'tec@gmail.com', 'Harry', 'Doe', '$2y$12$ZnYPgceWGUEGyXxhQjGmbOX6Xmu6t5rGYx0rtws1vg5Zjlkm5nRza', '09-111111111', 'ROLE_TECHNICIAN', 'Tec');
+	VALUES (true,'tec1@gmail.com', 'Harry', 'Doe', '$2y$12$ZnYPgceWGUEGyXxhQjGmbOX6Xmu6t5rGYx0rtws1vg5Zjlkm5nRza', '09-111111111', 'ROLE_TECHNICIAN', 'Tec');
 INSERT INTO re_user(active, email, firstname, lastname, password, phone, role, username)
 	VALUES (true,'jen@gmail.com', 'Jenny', 'May', '$2y$12$ZnYPgceWGUEGyXxhQjGmbOX6Xmu6t5rGYx0rtws1vg5Zjlkm5nRza', '09-111111111', 'ROLE_RESIDENT', 'Res1');
 INSERT INTO re_user(active, email, firstname, lastname, password, phone, role, username)

@@ -18,10 +18,10 @@
 		</c:forEach>
        </ul>
        <c:if test="${!event.residents.contains(user)}">  
-       	<a href="/joinEvent?id=${event.eventId}"><button type="submit" class="btn btn-success">Join Event</button></a>
+       	<a href="/joinEvent?id=${event.eventId}"><button type="submit" class="btn btn-success" id="joinEvent">Join Event</button></a>
        </c:if>
        <c:if test="${event.residents.contains(user)}">  
-       	<a href="/cancelJoinEvent?id=${event.eventId}"><button type="submit" class="btn btn-success">Cancel Join</button></a>
+       	<a href="/cancelJoinEvent?id=${event.eventId}"><button type="submit" class="btn btn-success" id="cancelJoinEvent">Cancel Join</button></a>
        </c:if>
     </div>
    </div>
@@ -38,7 +38,7 @@
         <textarea name="comment" class="form-control" rows="3"></textarea>
         <input name="eventId" type="hidden" value="${event.eventId}"/>
       </div>
-      <button type="submit" class="btn btn-default">Post</button>
+      <button type="submit" class="btn btn-default" id="postComment">Post</button>
     </form>
    </div>
  </div>
@@ -61,26 +61,12 @@
 			    <c:if test="${comment.createdBy == username}">
 					<button class="btn btn-success" id="editButton" onClick="enableComment(${comment.commentId})">Edit</button>
 		            <a href="/deleteComment?commentId=${comment.commentId}&eventId=${event.eventId}">
-		              	<button class="btn btn-success">Delete</button>
+		              	<button class="btn btn-success" id="deleteComment">Delete</button>
 		            </a>
            		</c:if>
           </div>
        </div>
     </c:forEach>
-    </div>
-    
-    <div class="row">
-    	 <div class="media">
-	         <div class="media-body">
-	         	<p>${event.residents.size()} people are joining the event</p>
-	         	<ul>
-			       <c:forEach items="${event.residents}" var="resident" >
-						<li><p>${resident.firstname} ${resident.lastname}</p></li>
-					</c:forEach>
-		       </ul>
-	         
-	         </div>
-         </div>
     </div>
    
     

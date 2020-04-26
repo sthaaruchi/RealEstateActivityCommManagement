@@ -1,3 +1,4 @@
+  
 <%@ include file="common/header.jspf"%>
 <%@ include file="common/navigation.jspf"%>
 
@@ -38,9 +39,9 @@
 							<td>${event.duration}</td>
 							<c:if test="${role == 'ROLE_MANAGER'}">
 								<td><a type="button" class="btn btn-success"
-									href="/updateEvent?id=${event.eventId}">Update</a> <a
+									href="/updateEvent?id=${event.eventId}" id='updateEvent'>Update</a> <a
 									type="button" class="btn btn-warning"
-									href="/deleteEvent?id=${event.eventId}">Delete</a></td>
+									href="/deleteEvent?id=${event.eventId}" id='deleteEvent'>Delete</a></td>
 							</c:if>
 						</tr>
 					</c:forEach>

@@ -178,6 +178,7 @@ public class AnnouncementController {
 	    
 	    model.addAttribute("buildings", buildings);
 	    model.addAttribute("usergroups", usergroup);
+	    model.addAttribute("allEvents", eventService.getCurrentEventsForJuristics(user.getUserId().longValue()));
         return "announcementAdd";
     }
 	
@@ -187,12 +188,20 @@ public class AnnouncementController {
             return "eventAdd";
         }
         announcement.setUserGroup(announcement.getUserGroup().toUpperCase());
-		if(announcement.getUserGroup().equalsIgnoreCase("ROLE_ALL")) {
+		if(announcement.getUserGroup().equalsIgnoreCase("ALL")) {
 			announcement.setUserGroup(null);
 		}
         ReUser u = userDao.findByUsername(request.getName());
 		announcement.setEditableBy(u.getRole());
-		announcementService.updateAnnouncement(announcement);
+		if(announcement.getPublishAnnouncementDate()==null) {
+			announcement.setPublished(true);
+			announcementService.updateAnnouncement(announcement);
+			announcementService.sendMailForAnnouncement(announcement);
+		}
+		else {
+			announcementService.updateAnnouncement(announcement);
+		}
+		//announcementService.updateAnnouncement(announcement);
         return "redirect:/showAnnouncements";
     }
 	
