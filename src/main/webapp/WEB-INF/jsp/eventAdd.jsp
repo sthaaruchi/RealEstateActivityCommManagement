@@ -11,35 +11,35 @@
       <form:hidden path="comments" />
       <form:hidden path="announcements" />
       <fieldset class="form-group">
-       <form:label path="title">Title</form:label>
+       <form:label path="title"><fmt:message key="label.event.title" /></form:label>
        <form:input path="title" type="text" class="form-control"
         required="required" />
        
       </fieldset>
       
       <fieldset class="form-group">
-       <form:label path="details">Event Details</form:label>
+       <form:label path="details"><fmt:message key="label.event.details" /></form:label>
        <form:input path="details" type="text" class="form-control"
         required="required" />
        
       </fieldset>
       
       <fieldset class="form-group">
-       <form:label path="location">Event Location</form:label>
+       <form:label path="location"><fmt:message key="label.event.location" /></form:label>
        <form:input path="location" type="text" class="form-control"
         required="required" />
        
       </fieldset>
       
       <fieldset class="form-group">
-       <form:label path="duration">Event Duration</form:label>
+       <form:label path="duration"><fmt:message key="label.event.duration" /></form:label>
        <form:input path="duration" type="text" class="form-control"
         required="required" />
        
       </fieldset>
 
       <fieldset class="form-group">
-       <form:label path="eventDate">Event Date</form:label>
+       <form:label path="eventDate"><fmt:message key="label.event.eventdate" /></form:label>
        <form:input path="eventDate" type="datetime-local" class="form-control"
         required="required" />
 
