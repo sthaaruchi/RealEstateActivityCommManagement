@@ -17,6 +17,10 @@ import com.realestate.model.ReUser;
  */
 public class UserDetailsImpl implements UserDetails {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private ReUser user;
 	
 	public UserDetailsImpl(ReUser user) {

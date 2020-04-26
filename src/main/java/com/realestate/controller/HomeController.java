@@ -26,6 +26,7 @@ public class HomeController {
 	
 	@RequestMapping(path = "/home")
 	public String userDashboard(Principal request) {
+		logger.info("home page -> userDashboard()");
 		return "Home";
 	}
 	
@@ -37,6 +38,12 @@ public class HomeController {
 	
 	@RequestMapping(path= "/logout-success")
 	public String logoutPage() {
-		return "logout.jsp";
+		logger.info("successfully logged out -> logoutPage()");
+		return "logout";
+	}
+	
+	@RequestMapping(path="/chat")
+	public String home() {
+		return "chat";
 	}
 }

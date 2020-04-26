@@ -74,7 +74,7 @@
 							</form:select>
 						</fieldset>
 
-						<button type="submit" class="btn btn-success">Save</button>
+						<button type="submit" class="btn btn-success" id="savebtn">Save</button>
 					</form:form>
 				</div>
 			</div>

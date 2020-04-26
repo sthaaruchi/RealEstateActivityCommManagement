@@ -8,7 +8,7 @@
 				placeholder="search announcments">
 		</div>
 		<a type="button" class="btn btn-primary btn-md "
-			href="/addAnnouncement">Create New Announcement</a>
+			href="/addAnnouncement" id="newAnnouncement">Create New Announcement</a>
 	</div>
 	<br>
 	<div class="panel panel-primary">

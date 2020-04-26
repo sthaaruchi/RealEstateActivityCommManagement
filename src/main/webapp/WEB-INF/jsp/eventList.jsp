@@ -12,9 +12,10 @@
 			<table class="table table-striped">
 				<thead>
 					<tr>
-						<th width="30%">Title</th>
-						<th width="30%">Location</th>
+						<th width="20%">Title</th>
+						<th width="20%">Location</th>
 						<th width="20%">Event Date</th>
+						<th width="20%">Duration</th>
 						<th width="20%"></th>
 					</tr>
 				</thead>
@@ -24,7 +25,8 @@
 							<td><a href="/viewEvent?id=${event.eventId}">${event.title}</a></td>
 							<td>${event.location}</td>
 							<td><fmt:formatDate value="${event.eventDate}"
-									pattern="dd/MM/yyyy" /></td>
+									pattern="dd/MM/yyyy HH:mm" /></td>
+							<td>${event.duration}</td>
 
 						</tr>
 					</c:forEach>

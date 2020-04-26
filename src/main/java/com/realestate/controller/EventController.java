@@ -10,6 +10,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -55,10 +56,12 @@ public class EventController {
 
 	
 	@RequestMapping(path="/addEvent", method = RequestMethod.GET)
-	public String showNewEventPage(Model model) {
+	public String showNewEventPage(Model model, Principal principal) {
 	    ReEvent event = new ReEvent();
 	    model.addAttribute("event", event);
-	    List<ReBuilding> buildings = buildingDao.findAll();
+	    
+	    ReUser u = userDao.findByUsername(principal.getName());
+	    List<ReBuilding> buildings = buildingDao.findByJuristicResponsible(u.getUserId());
 	    
 	    model.addAttribute("allBuildings", buildings);
 	    
@@ -88,6 +91,7 @@ public class EventController {
 	    return "eventList";
 	}
 	
+	@PreAuthorize("hasAnyRole('MANAGER,TECHNICIAN,SECURITY')")
 	@RequestMapping(path="/showEventsForJuristics", method = RequestMethod.GET)
 	public String showEventsPageForJuristics(ModelMap model, Principal principal) {
 		ReUser u = userDao.findByUsername(principal.getName());
@@ -101,11 +105,12 @@ public class EventController {
 	}
 	
 	@RequestMapping(value = "/updateEvent", method = RequestMethod.GET)
-    public String showUpdateTodoPage(@RequestParam long id, ModelMap model) {
+    public String showUpdateTodoPage(@RequestParam long id, ModelMap model, Principal principal) {
         ReEvent event = eventService.getEventById(id).get();
         model.put("event", event);
-        List<ReBuilding> buildings = buildingDao.findAll();
-	    
+        ReUser u = userDao.findByUsername(principal.getName());
+	    List<ReBuilding> buildings = buildingDao.findByJuristicResponsible(u.getUserId());
+	   	    
 	    model.put("allBuildings", buildings);
         return "eventAdd";
     }
@@ -131,6 +136,7 @@ public class EventController {
     public String viewEventDetails(@RequestParam long id, ModelMap model, Principal principal) {
         ReEvent event = eventService.getEventById(id).get();
         model.put("event", event);
+        
         
         ReUser u = userDao.findByUsername(principal.getName());
         model.put("user", u);
