@@ -1,5 +1,5 @@
 <%@ include file="common/header.jspf"%>
-<%@ include file="common/navigation.jspf"%>
+<%@ include file="common/navigationAnnouncement.jspf"%>
 
 <div class="container">
 	<input class="form-control mb-3" id="tableSearch" type="text"

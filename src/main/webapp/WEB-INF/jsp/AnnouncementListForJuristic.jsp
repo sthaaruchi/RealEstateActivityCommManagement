@@ -1,11 +1,11 @@
 <%@ include file="common/header.jspf"%>
-<%@ include file="common/navigation.jspf"%>
+<%@ include file="common/navigationAnnouncement.jspf"%>
 
 <div class="container">
 	<div class="container">
 		<div class="col-md-7 col-md-offset-1 ">
 			<input class="form-control mb-12" id="tableSearch" type="text"
-				placeholder="search announcments">
+				placeholder="search announcements"> <br>
 		</div>
 		<a type="button" class="btn btn-primary btn-md "
 			href="/addAnnouncement" id="newAnnouncement">Create New Announcement</a>

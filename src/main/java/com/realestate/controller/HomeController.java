@@ -41,9 +41,9 @@ public class HomeController {
 		logger.info("successfully logged out -> logoutPage()");
 		return "logout";
 	}
-	
-	@RequestMapping(path="/chat")
-	public String home() {
-		return "chat";
+
+	@RequestMapping(path="/chatroom")
+	public String chatRoomHome() {
+		return "ChatHomePage";
 	}
 }

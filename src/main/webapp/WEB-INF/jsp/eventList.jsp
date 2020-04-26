@@ -1,5 +1,5 @@
 <%@ include file="common/header.jspf"%>
-<%@ include file="common/navigation.jspf"%>
+<%@ include file="common/navigationEvent.jspf"%>
 
 <div class="container">
 	<input class="form-control mb-3" id="tableSearchForEvent" type="text"

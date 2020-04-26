@@ -1,6 +1,6 @@
 
 <%@ include file="common/header.jspf"%>
-<%@ include file="common/navigation.jspf"%>
+<%@ include file="common/navigationAnnouncement.jspf"%>
 
 <div class="container">
 	<div class="row">

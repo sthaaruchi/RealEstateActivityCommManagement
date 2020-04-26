@@ -1,13 +1,12 @@
-  
 <%@ include file="common/header.jspf"%>
-<%@ include file="common/navigation.jspf"%>
+<%@ include file="common/navigationEvent.jspf"%>
 
 <div class="container">
 	<div class="container">
 		<div class="col-md-7 col-md-offset-1 ">
 			<input class="form-control mb-12" id="tableSearchForEvent" type="text"
 				placeholder="search event">
-		</div>
+		</div> 
 		<c:if test="${role == 'ROLE_MANAGER'}">
 			<a type="button" class="btn btn-primary btn-md" href="/addEvent">Create
 				New Event</a>

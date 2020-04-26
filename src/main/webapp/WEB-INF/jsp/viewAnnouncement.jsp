@@ -1,5 +1,5 @@
 <%@ include file="common/header.jspf"%>
-<%@ include file="common/navigation.jspf"%>
+<%@ include file="common/navigationAnnouncement.jspf"%>
 <div class="container">
 	<div class="row">
 		<div class="col-md-6 col-md-offset-3 ">
