@@ -68,6 +68,20 @@
        </div>
     </c:forEach>
     </div>
+    <!-- added to show the number of users that has joined the event -->
+    <div class="row">
+    	 <div class="media">
+	         <div class="media-body">
+	         	<p>${event.residents.size()} people are joining the event</p>
+	         	<ul>
+			       <c:forEach items="${event.residents}" var="resident" >
+						<li><p>${resident.firstname} ${resident.lastname}</p></li>
+					</c:forEach>
+		       </ul>
+
+	         </div>
+         </div>
+    </div>
    
     
 </div>
