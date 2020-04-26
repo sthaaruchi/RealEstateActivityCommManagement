@@ -33,7 +33,7 @@
 							<td>${announcement.description}</td>
 							<td><fmt:formatDate
 									value="${announcement.publishAnnouncementDate}"
-									pattern="dd/MM/yyyy  hh/mm/ss" /></td>
+									pattern="dd/MM/yyyy HH:mm" /></td>
 							<jsp:useBean id="now" class="java.util.Date" />
 							<c:if test="${role == 'ROLE_MANAGER'}">
 								<td><c:if

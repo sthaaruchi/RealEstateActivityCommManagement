@@ -41,4 +41,13 @@ public interface ReUserJPADao extends JpaRepository<ReUser, Long>{
 			+ " WHERE rf.juristic_id=?", nativeQuery= true)
 	List<ReBuilding> getAllResponsibleBuildings(long juristicId);
 
+	//Added by ruchi
+	@Query(value="SELECT * FROM re_user where user_id in "
+			+ "(SELECT u.user_id FROM re_announcement a JOIN "
+			+ "re_event e ON a.event_event_id = e.event_id "
+			+ "JOIN event_joined ej ON ej.event_id = e.event_id "
+			+ "JOIN re_user u ON ej.user_id = u.user_id "
+			+ "WHERE a.announcement_id = ?)", nativeQuery=true)
+	List<ReUser> findAllUsersJoiningEvent(long announcementId);
+
 }

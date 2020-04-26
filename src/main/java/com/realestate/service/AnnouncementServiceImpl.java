@@ -1,6 +1,8 @@
 package com.realestate.service;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.MailException;
@@ -74,8 +76,14 @@ public class AnnouncementServiceImpl implements AnnouncementService {
 	public void sendMailForAnnouncement(ReAnnouncement announcement) {
 		List<ReUser> residents = userDao.findAllResidentsLiveIn(announcement.getAnnouncementId().longValue());
 		List<ReUser> juristics = userDao.findAllJursiticsResponsibleFor(announcement.getAnnouncementId().longValue());
+		//Added by ruchi for sending email to those users who have joined the event for the announcement created for event
+		List<ReUser> userJoined = userDao.findAllUsersJoiningEvent(announcement.getAnnouncementId().longValue());
+		List<ReUser> allUsers = new ArrayList<>();
+		allUsers.addAll(residents);
+		allUsers.addAll(juristics);
+		allUsers.addAll(userJoined);
 		String made_by=announcement.getEditableBy().substring(5);
-		for (ReUser resident : residents) {
+		/* for (ReUser resident : residents) {
 			SimpleMailMessage emailMsg = new SimpleMailMessage();
 			emailMsg.setTo(resident.getEmail());
 			emailMsg.setText(announcement.getDescription()+"\n Annocunced by "+made_by);
@@ -99,6 +107,19 @@ public class AnnouncementServiceImpl implements AnnouncementService {
 			}
 			catch(MailException ex) { 
 				System.err.println(ex.getMessage());
+			}
+		} */
+		for (ReUser user : allUsers) {
+			SimpleMailMessage emailMsg = new SimpleMailMessage();
+			emailMsg.setTo(user.getEmail());
+			emailMsg.setText(announcement.getDescription()+"\n Annocunced by "+made_by);
+			emailMsg.setSubject("New Announcement:" +announcement.getTitle());
+			emailMsg.setFrom("reacm-7a71d1@inbox.mailtrap.io");
+			try {
+				emailService.sendEmail(emailMsg);
+			}
+			catch(MailException ex) { 
+				logger.warn("Message sending failed :: " + ex.getMessage());
 			}
 		}
 	}
