@@ -64,22 +64,25 @@
 							</form:select>
 						</fieldset>
 						<!-- Ruchi -->
-						<fieldset class="form-group">
-							<form:label path="event">Announcement for Event:</form:label>
-							<form:select path="event" class="multiselect-ui form-control">
-								<form:option selected="selected" disabled="disabled" hidden="hidden" style='display: none' value=''></form:option>
-								<c:forEach items="${allEvents}" var="selEvent">
-									<c:if test="${announcement.event.eventId == selEvent.eventId}">
-										<form:option value="${selEvent.eventId}"
-											selected="selected">${selEvent.title}</form:option>
-									</c:if>
-									<c:if test="${announcement.event.eventId != selEvent.eventId}">
-										<form:option value="${selEvent.eventId}">${selEvent.title}</form:option>
-									</c:if>
-										
-								</c:forEach>
-							</form:select>
-						</fieldset>
+						<c:if test="${user.role == 'ROLE_MANAGER'}">
+
+							<fieldset class="form-group">
+								<form:label path="event">Announcement for Event:</form:label>
+								<form:select path="event" class="multiselect-ui form-control">
+									<form:option selected="selected" disabled="disabled"
+										hidden="hidden" style='display: none' value=''></form:option>
+									<c:forEach items="${allEvents}" var="selEvent">
+										<c:if test="${announcement.event.eventId == selEvent.eventId}">
+											<form:option value="${selEvent.eventId}" selected="selected">${selEvent.title}</form:option>
+										</c:if>
+										<c:if test="${announcement.event.eventId != selEvent.eventId}">
+											<form:option value="${selEvent.eventId}">${selEvent.title}</form:option>
+										</c:if>
+
+									</c:forEach>
+								</form:select>
+							</fieldset>
+						</c:if>
 
 						<button type="submit" class="btn btn-success" id="savebtn">Save</button>
 					</form:form>

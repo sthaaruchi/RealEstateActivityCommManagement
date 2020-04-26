@@ -52,3 +52,5 @@ INSERT INTO public.responsible_for(juristic_id, building_id)
 	VALUES (4, 3);
 INSERT INTO public.responsible_for(juristic_id, building_id)
 	VALUES (7, 3);
+
+

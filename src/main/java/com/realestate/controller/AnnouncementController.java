@@ -111,8 +111,8 @@ public class AnnouncementController {
 			usergroup.add("RESIDENT");
 		}
 		ReAnnouncement announcement = new ReAnnouncement();
-		List<ReBuilding> buildings = buildingDao.findAll();
-		
+	    List<ReBuilding> buildings = buildingDao.findByJuristicResponsible(user.getUserId());
+		model.addAttribute("user",user);
 		model.addAttribute("announcement", announcement);
 		model.addAttribute("buildings", buildings);
 		model.addAttribute("usergroups", usergroup);
@@ -174,8 +174,8 @@ public class AnnouncementController {
 		}
 		ReAnnouncement announcement = announcementService.getAllAnnouncementById(id).get();
 		model.addAttribute("announcement", announcement);
-        List<ReBuilding> buildings = buildingDao.findAll();
-	    
+	    List<ReBuilding> buildings = buildingDao.findByJuristicResponsible(user.getUserId());
+        model.addAttribute("user",user);
 	    model.addAttribute("buildings", buildings);
 	    model.addAttribute("usergroups", usergroup);
 	    model.addAttribute("allEvents", eventService.getCurrentEventsForJuristics(user.getUserId().longValue()));
