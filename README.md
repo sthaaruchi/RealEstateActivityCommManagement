@@ -1,45 +1,5 @@
 # RealEstateActivityCommManagement
-Asian Institute of Technology
-School of Engineering and Technology
-
-
-
-AT70.19 – Software Development and Quality Improvement
-
-January 2020
-
-
-
-
-
-User Manual
-
-Activity Management and Communication Channels for Real Estates
-
-
-Submitted to:
-Dr. Apichon Witayangkurn
-
-
-
-
-Submitted by: Team 2
-Ruchi Shrestha		120807
-Sahaporn Sriparamong	121170
-Suprava Sahoo		120984
-Su Wai Myo			120950
-
-
-
-
-Due Date:
-April 27th, 2020
- 
- 
- 
- 
- 
-IV. User and Installation Manual
+User and Installation Manual
 
 
 Getting started
