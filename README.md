@@ -5,7 +5,7 @@ User and Installation Manual
 Getting started
 Once you received your login information from admin, you will be able to login to Real Estate information website
 
-
+!.file:///C:/Users/suppy/Downloads/pasted%20image%200.pdf
 Announcements can be viewed by all juristics if the announcement is related to the building he takes care of or he is the intended user group.
 Announcements can be updated/deleted if the announcement is made by the same person or the person with the same role.
 Manager can view, update, or delete any announcements created for the building he is responsible for.
