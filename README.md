@@ -11,6 +11,7 @@ Announcements can be updated/deleted if the announcement is made by the same per
 Manager can view, update, or delete any announcements created for the building he is responsible for.
 
 Components              ---          Description
+
 Home                    --->             Home Page of Real Estate information website 
 
 
