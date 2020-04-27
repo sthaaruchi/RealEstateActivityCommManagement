@@ -10,12 +10,10 @@ Announcements can be viewed by all juristics if the announcement is related to t
 Announcements can be updated/deleted if the announcement is made by the same person or the person with the same role.
 Manager can view, update, or delete any announcements created for the building he is responsible for.
 
-Components
-Description
-Home
+Components              ---          Description
+Home                    --->             Home Page of Real Estate information website 
 
-Home Page of Real Estate information website 
-Event
+
 
 Event Management Page pertaining to viewing and creating the events
 Announcement
