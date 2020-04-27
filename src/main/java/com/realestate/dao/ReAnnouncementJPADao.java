@@ -54,7 +54,7 @@ public interface ReAnnouncementJPADao extends JpaRepository<ReAnnouncement, Long
 	 * JPA Repository class that has all the methods interacting to re_announcement table
 	 */
 	
-	@Query(value="SELECT * from re_announcement where publish_announcement_date BETWEEN TIMESTAMP 'today' AND TIMESTAMP 'tomorrow';", nativeQuery = true)
+	@Query(value="SELECT * from re_announcement where (publish_announcement_date BETWEEN TIMESTAMP 'today' AND TIMESTAMP 'tomorrow') AND is_published=false;", nativeQuery = true)
 	List<ReAnnouncement> getAnnouncementsToEmail();
 	
 	//Added by Ruchi

@@ -117,6 +117,7 @@ public class AnnouncementServiceImpl implements AnnouncementService {
 			emailMsg.setFrom("reacm-7a71d1@inbox.mailtrap.io");
 			try {
 				emailService.sendEmail(emailMsg);
+				announcement.setPublished(true);
 			}
 			catch(MailException ex) { 
 				logger.warn("Message sending failed :: " + ex.getMessage());
